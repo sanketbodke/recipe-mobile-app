@@ -19,8 +19,8 @@ const signIn = (username: String, password: String) => {
   const submit = async () => {
     setIsLoading(true)
     try {
-      await axios.post(`${API_BASE_URL}/users/login`, form)
-      router.push("/")
+      // await axios.post(`${API_BASE_URL}/users/login`, form)
+      router.push("/home")
     } catch (error) {
       Alert.alert(error.message)
     } finally {
@@ -76,7 +76,7 @@ const signIn = (username: String, password: String) => {
             <Text className="text-lg text-secondary font-pregular">
               Don't have an account?
             </Text>
-            <Link href="/sign-up" className="text-lg font-psemibold text-secondary">Sign Up</Link>
+            <Link href="/home" className="text-lg font-psemibold text-secondary">Sign Up</Link>
           </View>
         </View>
       </ScrollView>

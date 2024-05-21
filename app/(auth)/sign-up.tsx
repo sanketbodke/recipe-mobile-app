@@ -7,7 +7,6 @@ import CustomButton from '@/components/CustomButton'
 import { Link, router } from 'expo-router'
 import API_BASE_URL from '@/constants/api'
 import axios from "axios"
-import { showMessage } from "react-native-flash-message";
 
 const signUp = (username: String, password: String) => {
   const [form, setForm] = useState({
@@ -22,7 +21,7 @@ const signUp = (username: String, password: String) => {
     setIsLoading(true)
     try {
       await axios.post(`${API_BASE_URL}/users/register`, form)
-      // for testing
+      // testing
       Alert.alert("Account Created")
       router.push("/")
     } catch (error) {
@@ -91,7 +90,7 @@ const signUp = (username: String, password: String) => {
             <Text className="text-lg text-secondary font-pregular">
               Already have an account ?
             </Text>
-            <Link href="/sign-in" className="text-lg font-psemibold text-secondary">Sign In</Link>
+            <Link href="/home" className="text-lg font-psemibold text-secondary">Sign In</Link>
           </View>
         </View>
       </ScrollView>
