@@ -8,7 +8,7 @@ import { router } from 'expo-router'
 
 const index = () => {
   return (
-    <SafeAreaView className="h-full">
+    <SafeAreaView className="h-full bg-white">
       <ScrollView contentContainerStyle={{ height: '100%' }}>
         <View className="w-full justify-center items-center h-full px-4">
           <View>

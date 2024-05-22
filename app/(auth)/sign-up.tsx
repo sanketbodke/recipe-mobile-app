@@ -32,7 +32,7 @@ const signUp = (username: String, password: String) => {
   }
 
   return (
-    <SafeAreaView className="h-full">
+    <SafeAreaView className="h-full bg-white">
       <ScrollView>
         <View className="w-full justify-center min-h-[75vh] px-4 my-6">
           <Image

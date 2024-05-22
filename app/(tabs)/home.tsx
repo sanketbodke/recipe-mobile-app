@@ -39,7 +39,9 @@ const Home = () => {
               Recently Added
             </Text>
 
-            <TrendingPost />
+            <TrendingPost 
+               data={recipes}
+            />
           </View>
         )}
       />

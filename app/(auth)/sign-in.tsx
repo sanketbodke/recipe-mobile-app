@@ -5,8 +5,6 @@ import { images } from '@/constants'
 import FormField from '@/components/FormField'
 import CustomButton from '@/components/CustomButton'
 import { Link, router } from 'expo-router'
-import API_BASE_URL from '@/constants/api'
-import axios from 'axios'
 
 const signIn = (username: String, password: String) => {
   const [form, setForm] = useState({
@@ -29,7 +27,7 @@ const signIn = (username: String, password: String) => {
   }
 
   return (
-    <SafeAreaView className="h-full">
+    <SafeAreaView className="h-full bg-white">
       <ScrollView>
         <View className="w-full justify-center min-h-[75vh] px-4 my-6">
           <Image
