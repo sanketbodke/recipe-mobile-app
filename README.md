@@ -1,4 +1,4 @@
-![Recipe App](https://github.com/sanketbodke/recipe-mobile-app/assets/84568517/a54fbc0e-1edc-40de-95ca-1490d054d582)
+![Recipe App (1)](https://github.com/sanketbodke/recipe-mobile-app/assets/84568517/32b88971-43fe-472c-b8b9-d7c11b5a6b31)
 
 ## Let's Cook 🍲 
 
