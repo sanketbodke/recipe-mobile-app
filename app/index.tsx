@@ -1,12 +1,20 @@
-import { View, Text, ScrollView, Image } from 'react-native'
-import { StatusBar } from 'expo-status-bar'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { images } from '@/constants'
-import CustomButton from '@/components/CustomButton'
-import { router } from 'expo-router'
+import React from 'react';
+import { View, Text, ScrollView, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import CustomButton from '../components/CustomButton';
+import { images } from '../constants';
+import { useGlobalContext } from '../context/GlobalProvide';
+import { router } from 'expo-router';
 
-const index = () => {
+const Index = () => {
+  const { loading, isLogged } = useGlobalContext();
+
+  if (!loading && isLogged) {
+    router.push("/home")
+    return null;
+  }
+
   return (
     <SafeAreaView className="h-full bg-white">
       <ScrollView contentContainerStyle={{ height: '100%' }}>
@@ -32,7 +40,7 @@ const index = () => {
       </ScrollView>
       <StatusBar backgroundColor="#000000" style="dark" />
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default index
+export default Index;

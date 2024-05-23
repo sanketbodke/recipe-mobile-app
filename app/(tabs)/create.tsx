@@ -5,9 +5,12 @@ import FormField from '@/components/FormField'
 import CustomButton from '@/components/CustomButton'
 import { router } from 'expo-router'
 import { icons } from '@/constants'
+import { useGlobalContext } from '@/context/GlobalProvide'
 
 const create = () => {
-  const userId = "664c96350b1ca00a5c5ab45e"
+  const { user } = useGlobalContext();
+
+  const userId = user.user._id
 
   const [form, setForm] = useState({
     name: "",
@@ -97,7 +100,7 @@ const create = () => {
           />
 
           <FormField
-            title={"recipeImg"}
+            title={"recipeImg Url"}
             value={form.recipeImg}
             handleChangeText={(e: any) => setForm({
               ...form,

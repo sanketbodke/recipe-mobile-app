@@ -1,15 +1,17 @@
-import { View, Text, Alert, FlatList, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, Alert, FlatList, Image, ActivityIndicator } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import axios from 'axios'
 import RecipeCard from '@/components/RecipeCard'
 import TrendingPost from '@/components/Trending'
 import useRecipes from '@/lib/useRecipes'
 import { getAllRecipes } from '@/lib/apiCalls'
+import EmptyState from '@/components/EmptyState'
+import { useGlobalContext } from '../../context/GlobalProvide';
+import { images } from '@/constants'
 
 const Home = () => {
-  const {data: recipes, isLoading, refetch} = useRecipes(getAllRecipes)
-
+  const { data: recipes, isLoading } = useRecipes(getAllRecipes)
+  const { user } = useGlobalContext();
+  
   return (
     <SafeAreaView className="bg-white h-full">
       <FlatList
@@ -23,12 +25,12 @@ const Home = () => {
             <View className="justify-between items-start flex-row mb-6 bg-[#facf50] rounded-[35px] p-4">
               <View>
                 <Text className="font-pmedium text-sm text-black">Welcome Back</Text>
-                <Text className="text-2xl font-psemibold text-black-100">Shriya</Text>
+                <Text className="text-2xl font-psemibold text-black-100">{user?.user?.username}</Text>
               </View>
 
               <View className="mt-1.5">
                 <Image
-                  source={{ uri: "https://avatars.githubusercontent.com/u/114821672?v=4" }}
+                  source={images.chefImg}
                   className="w-12 h-12 rounded-[50%]"
                   resizeMode="center"
                 />
@@ -39,10 +41,24 @@ const Home = () => {
               Recently Added
             </Text>
 
-            <TrendingPost 
-               data={recipes}
-            />
+            {isLoading ? (
+              <ActivityIndicator
+                animating={isLoading}
+                color="#000"
+                size="large"
+                className="mt-2"
+              />
+            ) : <TrendingPost
+              data={recipes}
+            />}
+
           </View>
+        )}
+        ListEmptyComponent={() => (
+          <EmptyState
+            title={"No recipes found"}
+            subtitle={"Be the first one to create recipe"}
+          />
         )}
       />
     </SafeAreaView>

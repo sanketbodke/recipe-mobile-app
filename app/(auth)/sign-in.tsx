@@ -5,6 +5,7 @@ import { images } from '@/constants'
 import FormField from '@/components/FormField'
 import CustomButton from '@/components/CustomButton'
 import { Link, router } from 'expo-router'
+import { login } from '@/lib/apiCalls'
 
 const signIn = (username: String, password: String) => {
   const [form, setForm] = useState({
@@ -17,7 +18,7 @@ const signIn = (username: String, password: String) => {
   const submit = async () => {
     setIsLoading(true)
     try {
-      // await axios.post(`${API_BASE_URL}/users/login`, form)
+      await login(form)
       router.push("/home")
     } catch (error) {
       Alert.alert(error.message)
