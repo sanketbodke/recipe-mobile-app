@@ -47,6 +47,14 @@ const logOut = async () => {
   }
 };
 
+const createRecipe = async (formData) => {
+  try {
+    await axios.post(`${API_BASE_URL}/recipe/create`, formData);
+  } catch (error) {
+    Alert.alert(error.message);
+  }
+};
+
 const getAllRecipes = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/recipe`);
@@ -92,6 +100,7 @@ export {
   register,
   login,
   logOut,
+  createRecipe,
   getCurrentUser,
   getAllRecipes,
   getRecipeById,

@@ -93,7 +93,7 @@ const signUp = (username: String, password: String) => {
             <Text className="text-lg text-secondary font-pregular">
               Already have an account ?
             </Text>
-            <Link href="/home" className="text-lg font-psemibold text-secondary">Sign In</Link>
+            <Link href="/sign-in" className="text-lg font-psemibold text-secondary">Sign In</Link>
           </View>
         </View>
       </ScrollView>

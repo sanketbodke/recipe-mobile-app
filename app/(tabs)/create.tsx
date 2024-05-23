@@ -6,6 +6,7 @@ import CustomButton from '@/components/CustomButton'
 import { router } from 'expo-router'
 import { icons } from '@/constants'
 import { useGlobalContext } from '@/context/GlobalProvide'
+import { createRecipe } from '@/lib/apiCalls'
 
 const create = () => {
   const { user } = useGlobalContext();
@@ -27,8 +28,8 @@ const create = () => {
   const submit = async () => {
     setIsLoading(true)
     try {
-      // await axios.post(`${API_BASE_URL}/users/login`, form)
-      router.push("/create")
+      await createRecipe(form)
+      Alert.alert("Recipe Created")
     } catch (error) {
       Alert.alert(error.message)
     } finally {

@@ -83,7 +83,7 @@ const signIn = (username: String, password: String) => {
             <Text className="text-lg text-secondary font-pregular">
               Don't have an account?
             </Text>
-            <Link href="/home" className="text-lg font-psemibold text-secondary">Sign Up</Link>
+            <Link href="/sign-up" className="text-lg font-psemibold text-secondary">Sign Up</Link>
           </View>
         </View>
       </ScrollView>
