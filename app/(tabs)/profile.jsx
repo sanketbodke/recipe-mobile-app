@@ -23,7 +23,6 @@ const profile = () => {
     await logOut()
     setUser(null)
     setIsLogged(false)
-    router.push("/sign-in")
   }
 
   return (

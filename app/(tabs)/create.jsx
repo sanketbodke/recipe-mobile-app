@@ -59,7 +59,7 @@ const create = () => {
           <FormField
             title={"Name"}
             value={form.name}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               name: e
             })}
@@ -70,7 +70,7 @@ const create = () => {
           <FormField
             title={"description"}
             value={form.description}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               description: e
             })}
@@ -81,7 +81,7 @@ const create = () => {
           <FormField
             title={"ingredients"}
             value={form.ingredients}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               ingredients: e
             })}
@@ -92,7 +92,7 @@ const create = () => {
           <FormField
             title={"instructions"}
             value={form.instructions}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               instructions: e
             })}
@@ -103,7 +103,7 @@ const create = () => {
           <FormField
             title={"recipeImg Url"}
             value={form.recipeImg}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               recipeImg: e
             })}
@@ -114,7 +114,7 @@ const create = () => {
           <FormField
             title={"cookingTime"}
             value={form.cookingTime}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               cookingTime: e
             })}

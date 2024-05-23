@@ -24,7 +24,6 @@ const Index = () => {
             <Text className="text-secondary text-[32px] font-pregular font-[900]">It's cooking time!</Text>
           </View>
           <Image
-            // source={{uri: "https://i.postimg.cc/sD79Mv0h/image.png"}}
             source={images.chefImg}
             className="w-full h-[400px]"
             resizeMode="contain"

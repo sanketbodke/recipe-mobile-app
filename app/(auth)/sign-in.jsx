@@ -8,7 +8,7 @@ import { Link, router } from 'expo-router'
 import { getCurrentUser, login } from '@/lib/apiCalls'
 import { useGlobalContext } from '@/context/GlobalProvide'
 
-const signIn = (username: String, password: String) => {
+const signIn = (username, password) => {
   const [form, setForm] = useState({
     "username": "",
     "password": ""
@@ -52,7 +52,7 @@ const signIn = (username: String, password: String) => {
           <FormField
             title={"Username"}
             value={form.username}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               username: e
             })}
@@ -63,7 +63,7 @@ const signIn = (username: String, password: String) => {
           <FormField
             title={"Password"}
             value={form.password}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               password: e
             })}

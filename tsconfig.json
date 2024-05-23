@@ -12,6 +12,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "app/(tabs)/_layout.tsx", "context/GlobalProvider.js", "context/GlobalProvide.tsx", "app/index.jsx"  ]
+    "expo-env.d.js"
+, "app/(tabs)/_layout.jsx", "context/GlobalProvider.js", "context/GlobalProvide.jsx", "app/index.jsx", "app/(auth)/_layout.jsx", "app/(auth)/sign-in.jsx", "app/(auth)/sign-up.jsx", "app/(tabs)/create.jsx", "app/(tabs)/home.jsx", "app/(tabs)/profile.jsx", "app/(tabs)/savedRecipes.jsx", "app/_layout.jsx", "app/[recipeId].jsx", "constants/api.js", "constants/Colors.js", "constants/icons.js", "constants/images.js", "constants/index.js", "hooks/useColorScheme.js", "hooks/useColorScheme.web.js", "hooks/useThemeColor.js", "lib/apiCalls.js", "lib/useRecipes.js"  ]
 }

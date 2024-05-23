@@ -8,7 +8,7 @@ import { Link, router } from 'expo-router'
 import { useGlobalContext } from '@/context/GlobalProvide'
 import { register } from '@/lib/apiCalls'
 
-const signUp = (username: String, password: String) => {
+const signUp = (username, password) => {
   const [form, setForm] = useState({
     "username": "",
     "email": "",
@@ -51,7 +51,7 @@ const signUp = (username: String, password: String) => {
           <FormField
             title={"Username"}
             value={form.username}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               username: e
             })}
@@ -62,7 +62,7 @@ const signUp = (username: String, password: String) => {
           <FormField
             title={"Email"}
             value={form.email}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               email: e
             })}
@@ -73,7 +73,7 @@ const signUp = (username: String, password: String) => {
           <FormField
             title={"Password"}
             value={form.password}
-            handleChangeText={(e: any) => setForm({
+            handleChangeText={(e) => setForm({
               ...form,
               password: e
             })}
