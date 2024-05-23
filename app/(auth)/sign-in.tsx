@@ -5,7 +5,8 @@ import { images } from '@/constants'
 import FormField from '@/components/FormField'
 import CustomButton from '@/components/CustomButton'
 import { Link, router } from 'expo-router'
-import { login } from '@/lib/apiCalls'
+import { getCurrentUser, login } from '@/lib/apiCalls'
+import { useGlobalContext } from '@/context/GlobalProvide'
 
 const signIn = (username: String, password: String) => {
   const [form, setForm] = useState({
@@ -15,10 +16,17 @@ const signIn = (username: String, password: String) => {
 
   const [isLoading, setIsLoading] = useState(false)
 
+  const { setUser, setIsLogged } = useGlobalContext();
+
   const submit = async () => {
     setIsLoading(true)
     try {
       await login(form)
+
+      const result = await getCurrentUser()
+      setUser(result)
+      setIsLogged(true)
+
       router.push("/home")
     } catch (error) {
       Alert.alert(error.message)

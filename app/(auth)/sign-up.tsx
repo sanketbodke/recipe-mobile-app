@@ -1,12 +1,12 @@
-import { View, Text, ScrollView, Image, Alert, ImageComponent } from 'react-native'
+import { View, Text, ScrollView, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '@/constants'
 import FormField from '@/components/FormField'
 import CustomButton from '@/components/CustomButton'
 import { Link, router } from 'expo-router'
-import API_BASE_URL from '@/constants/api'
-import axios from "axios"
+import { useGlobalContext } from '@/context/GlobalProvide'
+import { register } from '@/lib/apiCalls'
 
 const signUp = (username: String, password: String) => {
   const [form, setForm] = useState({
@@ -18,12 +18,15 @@ const signUp = (username: String, password: String) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const submit = async () => {
+    const { setUser, setIsLogged } = useGlobalContext();
     setIsLoading(true)
     try {
-      await axios.post(`${API_BASE_URL}/users/register`, form)
-      // testing
-      Alert.alert("Account Created")
-      router.push("/")
+      const result = await register(form)
+
+      setUser(result)
+      setIsLogged(true)
+
+      router.push("/home")
     } catch (error) {
       Alert.alert(error.message)
     } finally {

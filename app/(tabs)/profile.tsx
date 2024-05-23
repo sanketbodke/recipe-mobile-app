@@ -1,7 +1,7 @@
 import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native'
 import React from 'react'
 import useRecipes from '@/lib/useRecipes'
-import { getRecipesCreatedByUser } from '@/lib/apiCalls'
+import { getRecipesCreatedByUser, logOut } from '@/lib/apiCalls'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import RecipeCard from '@/components/RecipeCard'
 import { icons, images } from '@/constants'
@@ -11,13 +11,20 @@ import EmptyState from '@/components/EmptyState'
 
 const profile = () => {
 
-  const { user } = useGlobalContext();
+  const { user, setUser,setIsLogged } = useGlobalContext();
 
   const userId = user.user._id
 
   const { data: userData } = useRecipes(() => (
     getRecipesCreatedByUser(userId)
   ))
+
+  const logOutUser = async () => {
+    await logOut()
+    setUser(null)
+    setIsLogged(false)
+    router.push("/sign-in")
+  }
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -39,11 +46,15 @@ const profile = () => {
                   resizeMode="contain"
                 />
               </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => logOutUser()}
+              >
               <Image
                 source={icons.logout}
                 className="w-7 h-7 rounded-full shadow overflow-visible"
                 resizeMode="contain"
               />
+              </TouchableOpacity>
             </View>
             <View className="justify-center items-center gap-2 mb-6">
               <View className="mt-1.5">
