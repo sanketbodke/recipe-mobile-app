@@ -4,11 +4,16 @@ import useRecipes from '@/lib/useRecipes'
 import { getRecipesCreatedByUser } from '@/lib/apiCalls'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import RecipeCard from '@/components/RecipeCard'
-import { icons } from '@/constants'
+import { icons, images } from '@/constants'
 import { router } from 'expo-router'
+import { useGlobalContext } from '@/context/GlobalProvide'
+import EmptyState from '@/components/EmptyState'
 
 const profile = () => {
-  const userId = "664c96350b1ca00a5c5ab45e"
+
+  const { user } = useGlobalContext();
+
+  const userId = user.user._id
 
   const { data: userData } = useRecipes(() => (
     getRecipesCreatedByUser(userId)
@@ -43,14 +48,20 @@ const profile = () => {
             <View className="justify-center items-center gap-2 mb-6">
               <View className="mt-1.5">
                 <Image
-                  source={{ uri: "https://avatars.githubusercontent.com/u/114821672?v=4" }}
-                  className="w-12 h-12 rounded-[10%]"
+                  source={images.chefImg}
+                  className="w-20 h-20 rounded-[10%]"
                   resizeMode="cover"
                 />
               </View>
-              <Text className="text-[20px] font-medium">Shriya</Text>
+              <Text className="text-[20px] font-medium">{user.user.username}</Text>
             </View>
           </>
+        )}
+        ListEmptyComponent={() => (
+          <EmptyState
+            title={"No recipes found"}
+            subtitle={"Create Your First Recipe"}
+          />
         )}
       />
     </SafeAreaView>

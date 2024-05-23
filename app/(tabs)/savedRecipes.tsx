@@ -6,11 +6,15 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import RecipeCard from '@/components/RecipeCard'
 import { icons } from '@/constants'
 import { router } from 'expo-router'
+import { useGlobalContext } from '@/context/GlobalProvide'
+import EmptyState from '@/components/EmptyState'
 
 const savedRecipes = () => {
-  const userId = "664c96350b1ca00a5c5ab45e"
+  const { user } = useGlobalContext();
 
-  const { data: userData } = useRecipes(() => (
+  const userId = user.user._id
+
+  const { data: userData, isLoading } = useRecipes(() => (
     getSavedRecipes(userId)
   ))
 
@@ -40,6 +44,12 @@ const savedRecipes = () => {
               </View>
             </View>
           </>
+        )}
+        ListEmptyComponent={() => (
+          <EmptyState
+            title={"No recipes found"}
+            subtitle={"Save Your Favorite Recipe"}
+          />
         )}
       />
     </SafeAreaView>
